@@ -6,17 +6,12 @@ public class ChangingProperty
 
     public static void Main()
     {
-       
-            var instance = new ChangingProperty();
-            instance.PrintNameLength();
-          
+        var instance = new ChangingProperty();
+        instance.PrintNameLength();
     }
 
     public void PrintNameLength()
     {
-        if (Name is not null)
-        {
-            Console.WriteLine(Name.Length);
-        }
+        if (Name is not null) Console.WriteLine(Name.Length);
     }
 }

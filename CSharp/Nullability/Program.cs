@@ -3,7 +3,6 @@
 
 using Nullability;
 
-
 BasicDemo.Run();
 
 ChangingProperty.Main();
