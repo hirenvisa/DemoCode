@@ -1,8 +1,110 @@
-/CSharp/LinqExample/.idea/
-/CSharp/LinqExample/bin/
-/CSharp/LinqExample/obj/
-/CSharp/Nullability/.vs/
-/CSharp/Nullability/obj/
-/CSharp/Nullability/bin/
-/CSharp/Nullability/Nullability.sln.DotSettings.user
-/CSharp/Nullability/.idea/
+# Rider settings
+.idea/
+.idea_modules/
+
+# Visual Studio settings
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider and ReSharper settings
+*.sln.iml
+*.dotCover
+*.dotMemory
+*.dotTrace
+*.sln.DotSettings
+*.csproj.DotSettings
+
+# Rider, Visual Studio and Unity
+/Unity/Library/
+/Unity/Temp/
+/Unity/Obj/
+/Unity/Build/
+/Unity/Assets/
+/Unity/ProjectSettings/
+/Unity/logs/
+/Unity/Packages
+
+# Build and bin directories
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# Other build files
+**/[Dd]ebug/
+**/[Rr]elease/
+*.log
+
+# Test output
+TestResults/
+*.trx
+*.coverage
+.coveragejson
+*.opencover
+
+# Other IDE-specific files
+.idea/
+*.suo
+*.user
+*.rsuser
+*.resharper
+*.sln.DotSettings
+*.userosscache
+*.sln.docstates
+.ionide/
+
+# Web config and IIS Express
+.vscode
+.idea/
+.ipr
+.iws
+.idea/
+.idea_modules/
+.idea/workspace.xml
+.idea_tasks/
+.idea_modules/
+.idea/libraries/
+.idea/.classpath
+.idea/.project
+.idea/.settings/
+.idea/.tags
+
+# Rider
+.idea/.idea.*
+.idea/.idea_projects
+.idea/libraries/
+
+# Backup & temporary files
+*.swp
+*.bak
+*.bk
+*.tmp
+*.temp
+*.TMP
+~*
+
+# Project files
+project.lock.json
+project.fragment.lock.json
+
+# Rider specific
+.idea/
+
+# Auto-generated files (if any)
+auto-generated/
+
+# Rider logs
+log/
+logs/
+
+# Rider cached solutions
+.idea_solution_cache/
