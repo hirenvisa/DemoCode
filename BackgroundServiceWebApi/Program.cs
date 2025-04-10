@@ -7,8 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddSingleton<BackgroundQueueService<int>>();
-builder.Services.AddHostedService<BackgroundQueueReader>();
+
+builder.Services.AddSingleton<BackgroundTaskQueue>(provider => new BackgroundTaskQueue(500));
+builder.Services.AddHostedService<BackgroundTaskService>();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -23,23 +24,21 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("addToTask", 
+    async ([FromServices] BackgroundTaskQueue backgroundTaskQueue) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapPost("/addToQueue/{itemCount:int}", 
-    async ([FromServices] BackgroundQueueService<int> backgroundQueueService, int itemCount) =>
-{
-    for(int i=0; i<itemCount; i++)
+    for (int i = 0; i < 500; i++)
     {
-        await backgroundQueueService.QueueBackgroundWorkItemAsync(Random.Shared.Next(1,1001));
+        await backgroundTaskQueue.QueueBackgroundWorkItemAsync(async token =>
+        {
+            Console.WriteLine($"Mock image uploader started...");
+            int reference = Random.Shared.Next(1, 1001);
+            Console.WriteLine($"Image reference: {reference}");
+            Console.WriteLine($"Uploaded to bucket:");
+            Console.WriteLine($"Work completed!");
+            Console.WriteLine($"==========================");
+        });
     }
-}); 
+});
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

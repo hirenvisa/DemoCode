@@ -1,6 +1,5 @@
 @BackgroundServiceWebApi_HostAddress = http://localhost:5103
 
-@itemCount = 5;
-POST {{BackgroundServiceWebApi_HostAddress}}/addToQueue/{{itemCount}}
+GET {{BackgroundServiceWebApi_HostAddress}}/addToTask
 Accept: application/json
 
