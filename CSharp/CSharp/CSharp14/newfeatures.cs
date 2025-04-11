@@ -13,6 +13,16 @@ public class newfeatures
         Console.WriteLine($"Card Number: {card.Number}");
         card.Number = "    1234567890123456";
         Console.WriteLine($"Card Number: {card.Number}");
+        
+        Console.WriteLine("======== IMPLICIT CONVERSION - SPAN ==============");
+        char[] array = ['H','E','L','L','O', 'Ø', 'W','O','R','L','D'];
+        Span<char> span = array;
+        ReadOnlySpan<char> readOnlySpan = span;
+        
+        Console.WriteLine("Conversion: FROM array -> span -> readOnlySpan");
+        Console.WriteLine($"array -> {array.HasSingle('Ø')}");
+        Console.WriteLine($"span -> {span.HasSingle('Ø')}");
+        Console.WriteLine($"readonly span -> {readOnlySpan.HasSingle('Ø')}");
     }
 }
 
@@ -36,5 +46,20 @@ public class Card
     {
         get;
         set => field = value?.Trim();
+    }
+}
+
+public static class ExtensionMethods
+{
+    public static bool HasSingle<T>(this ReadOnlySpan<T> span, T value)
+    {
+        foreach (var item in span)
+        {
+            if (EqualityComparer<T>.Default.Equals(item, value))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
